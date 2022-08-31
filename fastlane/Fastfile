@@ -1,0 +1,20 @@
+
+default_platform(:android)
+platform :android do
+ desc "Generate build and upload to firebase"
+ lane :build do
+   gradle(
+     task: "assemble",
+     build_type: ENV['BUILD_TYPE'],
+   )
+   firebase_app_distribution(
+     app: "1:997356401505:android:2efdcf04e64835e0434b20",
+     release_notes_file: "Lots of amazing feature",
+     groups: "Internal",
+     firebase_cli_token: "1//03b4lCcOuNSC7CgYIARAAGAMSNwF-L9IrxkZGZ8aFYojStnG-TiK_O7NaM2Gdm450L3x6obxg8zPA8jIA9bnIr1uVjrBYsxKRB6s",
+     debug: false
+   )
+ 
+  end
+end
+
